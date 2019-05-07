@@ -1,68 +1,48 @@
-require 'spec_helper'
-require_relative '../lib/ruby_basics.rb'
+# Ignore the code in this file!
 
+class CLIReadme
 
-describe "ruby" do
-
-  describe "#division" do
-    it 'given two numbers returns quotient of the first number divided by the second number' do
-      num1 = 42
-      num2 = 7
-
-      expect(division(num1,num2)).to eq(6)
+  def run
+    system("clear")
+    puts "Welcome to your Ruby Basics Todo!"
+    puts "---------------------------------"
+    puts "Press enter to continue..."
+    input = gets
+    self.directions.each do |direction|
+      puts direction
+      input = gets
     end
+
+    puts "8. Now, type 'rspec' to run the tests and get started! Have fun!"
+    rspec = gets.chomp
+    while rspec != 'rspec'
+      puts "Type 'rspec'..."
+      rspec = gets.chomp
+    end
+
+    system("rspec")
   end
 
-  describe '#assign_variable' do
-    it 'takes an argument of a persons name and assign it to a variable name' do
-      value = "Bob"
-
-      expect(assign_variable(value)).to eq(value)
-    end
+  def directions
+    [
+      "1. For this todo, you're going to be reviewing the basics of the Ruby language. 
+          To move on from one step to the next, press Enter. Go ahead, try it now...",
+      "2. We're going to be putting a big focus on test driven development. We'll cover
+          it a bunch more later, but in essence, this
+          means that we write tests for our code before actually writing any code.",
+      "3. With that in mind, we'll be discovering the basics of Ruby through the use
+          of tests.",
+      "4. You'll be running tests using the RSpec framework, watching them fail, and
+          then making them pass. It's going to be a ton of fun!",
+      "5. Usually you'll make the tests pass by actually writing code, but in this case
+          you'll be exploring Ruby by altering the tests themselves.",
+      "6. We'll run the tests, see a huge explosion of errors, go fix one of the errors,
+          run the tests again, see slightly less errors and repeat.",
+      "7. Open spec/ruby_basics_spec.rb, then come back here."
+    ]
   end
 
-  describe '#argue' do
-    it 'accepts an argument and return that argument as is' do
-      phrase = "I'm right and you are wrong!"
-
-      expect(argue(phrase)).to eq(phrase)
-    end
-  end
-
-  describe '#greeting' do
-    it 'takes two arguments' do
-      greeting = "Hi there, "
-      name = "Bobby!"
-
-      expect{ greeting(greeting, name) }.to_not raise_error
-    end
-
-    it 'raises an error with one argument' do
-      greeting = "Hi there, "
-
-      expect{ greeting(greeting)}.to raise_error
-    end
-  end
-
-  describe '#return_a_value' do
-    it 'returns the phrase "Nice"' do
-      expect(return_a_value).to eq("Nice")
-    end
-  end
-
-  describe '#last_evaluated_value' do
-    it 'returns the phrase "expert"' do
-      expect(last_evaluated_value).to eq("expert")
-    end
-  end
-
-  describe '#pizza_party' do
-    it 'returns "cheese" by default' do
-      expect(pizza_party).to eq("cheese")
-    end
-
-    it 'returns the argument it received' do
-      expect(pizza_party("pepperoni")).to eq("pepperoni")
-    end
-  end
 end
+
+readme = CLIReadme.new
+readme.run
