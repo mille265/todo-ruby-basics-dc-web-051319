@@ -25,7 +25,7 @@ class CLIReadme
 
   def directions
     [
-      "1. For this todo, you're going to be reviewing the basics of the Ruby language. 
+      "1. For this todo, you're going to be reviewing the basics of the Ruby language.
           To move on from one step to the next, press Enter. Go ahead, try it now...",
       "2. We're going to be putting a big focus on test driven development. We'll cover
           it a bunch more later, but in essence, this
